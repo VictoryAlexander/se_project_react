@@ -83,18 +83,18 @@ function App() {
             />
             <span className='modal__error' id='place-link-error'></span>
           </label>
-          <p>Select the weather type:</p>
+          <p className='modal__description'>Select the weather type:</p>
           <div className='modal__input modal__input_type_radio'>
             <div>
-              <input type='radio' id='choiceHot' name='weatherType' value='hot' />
+              <input type='radio' id='choiceHot' name='weatherType' value='hot' className='modal__radio' />
               <label className='modal__label_radio' htmlFor='choiceHot'>Hot</label>
             </div>
             <div>
-              <input type='radio' id='choiceWarm' name='weatherType' value='warm' />
+              <input type='radio' id='choiceWarm' name='weatherType' value='warm' className='modal__radio' />
               <label className='modal__label_radio' htmlFor='choiceWarm'>Warm</label> 
             </div>
             <div>
-              <input type='radio' id='choiceCold' name='weatherType' value='cold' />
+              <input type='radio' id='choiceCold' name='weatherType' value='cold' className='modal__radio' />
               <label className='modal__label_radio' htmlFor='choiceCold'>Cold</label>
             </div>
           </div>

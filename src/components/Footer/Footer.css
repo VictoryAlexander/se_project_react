@@ -6,6 +6,7 @@
   line-height: 1.25;
   display: flex;
   justify-content: space-between;
+  margin-top: 85px;
 }
 
 .footer__copyright {

@@ -1,6 +1,5 @@
 .modal__preview {
   position: fixed;
-  pointer-events: none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -18,9 +17,11 @@
   height: 610px;
   background: #FFFFFF;
   border-radius: 16px;
+  position: relative;
+  overflow: hidden;
 }
 
-.modal__close-button {
+.modal__-item-close-button {
   background: transparent url(../../images/CloseIcon.svg) center no-repeat;
   border: none;
   width: 16px;
@@ -28,11 +29,14 @@
   padding: 0;
   transition: 0.5s;
   cursor: pointer;
+  position: absolute;
+  margin: 0;
+  top: 26px;
+  right: 26px;
 }
 
 .modal__preview-image {
   object-fit: cover;
-  overflow: hidden;
 }
 
 .modal__description {
@@ -40,12 +44,13 @@
   flex-direction: column;
 }
 
-.modal__title {
+.modal__item-title {
   font-family: 'Cabinet Grotesk', Arial, sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 1.2;
+  margin: 16px 0 0 0;
 }
 
 .modal__weather {

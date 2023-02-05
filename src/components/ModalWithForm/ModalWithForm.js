@@ -14,7 +14,7 @@ function ModalWithForm({ title, name, onClose, children }) {
           />
         </div>
         {children}
-        <button type="submit" className="modal__submit-button" disabled>Add garmet</button>
+        <button type="submit" className="modal__submit-button">Add garmet</button>
       </form>
     </div>
   )

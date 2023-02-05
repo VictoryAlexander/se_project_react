@@ -22,6 +22,7 @@
 
 .main__clothes {
   display: flex;
+  flex-direction: column;
 }
 
 .main__info {
@@ -43,6 +44,7 @@
 .main__items {
   list-style: none;
   margin: 0;
+  padding: 0;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 328px);

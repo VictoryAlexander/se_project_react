@@ -1,7 +1,7 @@
 import React from "react";
 import '../Main/Main.css';
 
-function WeatherCard(weatherData) {
+function WeatherCard({ weatherData }) {
   const actualWeather = weatherData.temperature;
 
   return (

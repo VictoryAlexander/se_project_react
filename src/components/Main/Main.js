@@ -23,13 +23,14 @@ function Main({ weatherData, cards, onCardClick }) {
         <div className="main__info">
           <div className="main__description-container">
             <p className="main__description">Today is {actualWeather}°F</p>
-            <p className="main__description"> / </p>
+            <p className="main__description">&nbsp;/&nbsp;</p>
             <p className="main__description">You may want to wear:</p>
           </div>
         </div>
         <ul className="main__items">
           {cards.filter(card => card.weather === weatherType()).map(filteredCard => (
             <ItemCard
+              key={filteredCard._id}
               card={filteredCard}
               onCardClick={onCardClick}
             />

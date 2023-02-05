@@ -2,10 +2,19 @@
   border-radius: 19px;
   background: #e9e9e9;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .card__image {
+  width: 226px;
+  height: 226px;
   object-fit: cover;
+  display: block;
+  cursor: pointer;
+  align-self: center;
+  margin-bottom: 66px;
 }
 
 .card__description {
@@ -15,4 +24,10 @@
   font-size: 16px;
   line-height: 20px;
   color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  width: 90px;
+  margin: 16px 0 0 0;
+  align-self: center;
 }

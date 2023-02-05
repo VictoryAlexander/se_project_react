@@ -1,6 +1,5 @@
 .modal {
   position: fixed;
-  pointer-events: none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -17,7 +16,6 @@
   display: flex;
   flex-direction: column;
   width: 496px;
-  height: 436px;
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
@@ -52,6 +50,7 @@
   width: 124px;
   height: 36px;
   background: rgba(0, 0, 0, 0.3);
+  border: none;
   border-radius: 4px;
   font-family: 'Cabinet Grotesk', Arial, sans-serif;
   font-style: normal;
@@ -62,4 +61,6 @@
   text-align: center;
   cursor: pointer;
   transition-duration: 0.5s;
+  margin-left: 28px;
+  margin-bottom: 36px;
 }
