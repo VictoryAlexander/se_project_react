@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px 40px 0 40px;
+}
+
+.header__container {
+  display: flex;
+  max-width: 273px;
+}
+
+.header__logo {
+  width: 89px;
+  height: 24px;
+}
+
+.header__date {
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0 0 0 24px;
+}
+
+.header__nav {
+}
+

@@ -1,0 +1,17 @@
+.footer {
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__copyright {
+  margin: 0 0 0 40px;
+}
+
+.footer__production-year {
+  margin: 0 40px 0 0;
+}

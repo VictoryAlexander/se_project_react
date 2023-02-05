@@ -1,0 +1,50 @@
+.main {
+  margin: 30px 40px 0 40px;
+}
+
+.main__weather-card {
+  background: #00A3FF;
+  height: 80px;
+  border-radius: 12px;
+  display: flex;
+}
+
+.main__temperature {
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  color: #FFFFFF;
+  margin: 0 0 0 16px;
+  align-self: center;
+}
+
+.main__clothes {
+  display: flex;
+}
+
+.main__info {
+  display: flex;
+}
+
+.main__description-container {
+  display: flex;
+}
+
+.main__description {
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.main__items {
+  list-style: none;
+  margin: 0;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 328px);
+  gap: 20px 17px;
+}

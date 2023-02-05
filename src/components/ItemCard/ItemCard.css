@@ -1,0 +1,18 @@
+.card {
+  border-radius: 19px;
+  background: #e9e9e9;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.card__image {
+  object-fit: cover;
+}
+
+.card__description {
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.6);
+}

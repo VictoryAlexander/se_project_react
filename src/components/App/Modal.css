@@ -1,0 +1,31 @@
+.modal__label {
+  margin: 0 28px 0 28px;
+}
+
+.modal__input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #000000;
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.modal__input_type_card-name {
+
+}
+
+.modal__error {
+
+}
+
+.modal__input_type_radio {
+
+}
+
+.modal__label_radio {
+
+}
