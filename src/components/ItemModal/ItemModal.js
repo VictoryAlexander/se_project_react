@@ -3,13 +3,13 @@ import './ItemModal.css';
 
 function ItemModal({ card, onClose }) {
   return (
-    <div className="modal__preview">
-      <div className="modal__container">
-        <button type="button" className="modal__item-close-button" onClick={onClose}></button>
-        <img className="modal__preview-image" alt={card.name} src={card.link} />
-        <div className="modal__description">
-          <h3 className="modal__item-title">{card.name}</h3>
-          <p className="modal__weather">Weather: {card.weather}</p>
+    <div className="item-modal__preview">
+      <div className="item-modal__container">
+        <button type="button" className="item-modal__close-button" onClick={onClose}></button>
+        <img className="item-modal__preview-image" alt={card.name} src={card.link} />
+        <div className="item-modal__description">
+          <h3 className="item-modal__title">{card.name}</h3>
+          <p className="item-modal__weather">Weather: {card.weather}</p>
         </div>
       </div>
     </div>

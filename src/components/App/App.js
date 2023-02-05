@@ -13,7 +13,7 @@ import { filterDataFromWeatherAPI, getForecastWeather } from '../../utils/weathe
 function App() {
   const [weatherData, setWeatherData] = React.useState({});
   const [clothingItems, setClothingItems] = React.useState([]);
-  const [activeModal, setActiveModal] = React.useState();
+  const [activeModal, setActiveModal] = React.useState(null);
   const [selectedCard, setSelectedCard] = React.useState(null);
 
   function handleCardClick(card) {
@@ -22,7 +22,7 @@ function App() {
   }
 
   function closeAllModals() {
-    setActiveModal();
+    setActiveModal(null);
   }
 
   React.useEffect(() => {
@@ -58,6 +58,7 @@ function App() {
           title="New garmet"
           name="new-card"
           onClose={closeAllModals}
+          buttonText="Add garmet"
         >
           <label className='modal__label'>
             <input

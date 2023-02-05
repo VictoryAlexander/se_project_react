@@ -1,4 +1,4 @@
-.modal__preview {
+.item-modal__preview {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -12,7 +12,7 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
-.modal__container {
+.item-modal__container {
   width: 500px;
   height: 610px;
   background: #FFFFFF;
@@ -21,8 +21,8 @@
   overflow: hidden;
 }
 
-.modal__-item-close-button {
-  background: transparent url(../../images/CloseIcon.svg) center no-repeat;
+.item-modal__close-button {
+  background: transparent url(../../images/CloseIcon_ItemModal.svg) center no-repeat;
   border: none;
   width: 16px;
   height: 16px;
@@ -35,16 +35,17 @@
   right: 26px;
 }
 
-.modal__preview-image {
+.item-modal__preview-image {
   object-fit: cover;
 }
 
-.modal__description {
+.item-modal__description {
   display: flex;
   flex-direction: column;
+  margin-left: 32px;
 }
 
-.modal__item-title {
+.item-modal__title {
   font-family: 'Cabinet Grotesk', Arial, sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -53,7 +54,7 @@
   margin: 16px 0 0 0;
 }
 
-.modal__weather {
+.item-modal__weather {
   font-family: 'Cabinet Grotesk', Arial, sans-serif;
   font-style: normal;
   font-weight: 700;
