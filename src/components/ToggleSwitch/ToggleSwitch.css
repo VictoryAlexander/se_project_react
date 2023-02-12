@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../vendor/fonts/CabinetGrotesk-Bold.otf) format("otf")
+}
+
+.toggle-switch {
+  
+}
+
+.toggle-switch__label {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 28px;
+  border: 2px solid #7e7e7e;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+.toggle-switch__checkbox {
+  
+}
+
+.toggle-switch__checkbox_state_hidden {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch__checkbox_state_visible {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+

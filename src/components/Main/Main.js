@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import './Main.css';
 import ItemCard from "../ItemCard/ItemCard.js";
 import WeatherCard from "../WeatherCard/WeatherCard.js";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherData, cards, onCardClick }) {
-  const actualWeather = weatherData.temperature;
+function Main({ weatherData, cards, onCardClick, onCardDelete }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   function weatherType() {
-    if (actualWeather >= 86) {
+    if (weatherData.temperature[currentTemperatureUnit] >= 86) {
       return 'hot';
-    } else if (actualWeather >= 66 && actualWeather <= 85) {
+    } else if (weatherData.temperature[currentTemperatureUnit] >= 66 && weatherData.temperature[currentTemperatureUnit] <= 85) {
       return 'warm';
-    } else if (actualWeather <= 65) {
+    } else if (weatherData.temperature[currentTemperatureUnit] <= 65) {
       return 'cold';
     }
   }
@@ -22,7 +23,7 @@ function Main({ weatherData, cards, onCardClick }) {
       <section className="main__clothes">
         <div className="main__info">
           <div className="main__description-container">
-            <p className="main__description">Today is {actualWeather}°F</p>
+            <p className="main__description">Today is {weatherData.temperature[currentTemperatureUnit]} and it is {weatherType()}</p>
             <p className="main__description">&nbsp;/&nbsp;</p>
             <p className="main__description">You may want to wear:</p>
           </div>
@@ -33,6 +34,7 @@ function Main({ weatherData, cards, onCardClick }) {
               key={filteredCard._id}
               card={filteredCard}
               onCardClick={onCardClick}
+              onCardDelete={onCardDelete}
             />
           ))}
         </ul>

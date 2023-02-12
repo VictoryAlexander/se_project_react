@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './Header.css';
 import './Navigation.css';
-import logoPath from "../../images/logo.png";
 import avatarDefault from "../../images/Avatar.png";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 
 function Header({ weatherData, handleAddClick }) {
@@ -14,9 +15,8 @@ function Header({ weatherData, handleAddClick }) {
   return (
     <header className="header">
       <div className="header__container">
-        <img 
-          src={logoPath}
-          alt="WTWR Logo"
+        <Link
+          to='/'
           className="header__logo"
         />
         <p className="header__date">
@@ -27,12 +27,15 @@ function Header({ weatherData, handleAddClick }) {
         <nav className="navigation">
           <ul className="navigation__container">
             <li>
+              <ToggleSwitch />
+            </li>
+            <li>
               <button onClick={handleAddClick} className="navigation__button">
                 + Add clothes
               </button>
             </li>
             <li>
-              <div className="navigation__link">
+              <Link to='/profile' className="navigation__link">
                 {username}
                 {avatar ? (
                   <img 
@@ -45,7 +48,7 @@ function Header({ weatherData, handleAddClick }) {
                     {username?.toUpperCase().charAt(0) || ''}
                   </span>
                 )}
-              </div>
+              </Link>
             </li>
           </ul>
         </nav>

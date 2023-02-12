@@ -16,8 +16,19 @@ function filterDataFromWeatherAPI(data) {
   }
   const weather = {};
   weather.city = data.name;
-  weather.temperature = data.main.temp;
+  weather.temperature.F = `${Math.round(data.main.temp)}°F`;
+  weather.temperature.C = `${Math.round((data.main.temp - 32) * 5/9)}°C`;
   return weather;
 }
 
-export { getForecastWeather, filterDataFromWeatherAPI };
+function weatherType(data) {
+  if (data.main.temp >= 86) {
+    return 'hot';
+  } else if (data.main.temp >= 66 && data.main.temp <= 85) {
+    return 'warm';
+  } else if (data.main.temp <= 65) {
+    return 'cold';
+  }
+}
+
+export { getForecastWeather, filterDataFromWeatherAPI, weatherType };

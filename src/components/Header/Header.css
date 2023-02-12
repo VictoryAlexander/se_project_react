@@ -12,6 +12,7 @@
 .header__logo {
   width: 89px;
   height: 24px;
+  background: transparent url(../../images/logo.png) center no-repeat;
 }
 
 .header__date {
