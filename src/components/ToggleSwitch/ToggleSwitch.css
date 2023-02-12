@@ -1,40 +1,84 @@
-@font-face {
-  font-family: "Cabinet Grotesk";
-  font-style: normal;
-  font-weight: 700;
-  src: url(../../vendor/fonts/CabinetGrotesk-Bold.otf) format("otf")
-}
-
 .toggle-switch {
-  
-}
-
-.toggle-switch__label {
-  position: relative;
-  display: inline-block;
-  width: 56px;
-  height: 28px;
-  border: 2px solid #7e7e7e;
-  border-radius: 20px;
-  background-color: #ffffff;
+  margin: 0 20px 0 0;
 }
 
 .toggle-switch__checkbox {
-  
-}
-
-.toggle-switch__checkbox_state_hidden {
-  opacity: 0;
-  width: 0;
   height: 0;
+  width: 0;
+  visibility: hidden;
 }
-
-.toggle-switch__checkbox_state_visible {
-  position: absolute;
+  
+.toggle-switch__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 50px;
+  height: 26px;
+  background-color: #fff;
+  border-radius: 25px;
+  position: relative;
+  border: 2px #7e7e7e solid;
+  box-sizing: border-box;
+  transition: 0.3s ease-in-out;
 }
-
+  
+.toggle-switch__button {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 20px;
+  transition: 0.2s;
+  background: #000;
+  box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+}
+  
+.toggle-switch__checkbox:checked + .toggle-switch__button {
+  left: calc(100% + 2px);
+  transform: translateX(-100%);
+}
+  
+.toggle-switch__label:hover {
+  border-color: #000;
+}
+  
+.toggle-switch__label:hover .toggle-switch__label_fahrenheit,
+.toggle-switch__label:hover .toggle-switch__label_celcius {
+  color: #fff;
+}
+  
+.toggle-switch__label_fahrenheit,
+.toggle-switch__label_celcius {
+  position: absolute;
+  margin: 0;
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  mix-blend-mode: difference;
+}
+  
+.toggle-switch__label_fahrenheit {
+  top: -2px;
+  left: -2px;
+}
+  
+.toggle-switch__label_celcius {
+  top: -2px;
+  right: -2px;
+}
+  
+.toggle-switch__label:active .toggle-switch__button {
+  width: 28px;
+}

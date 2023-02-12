@@ -1,4 +1,4 @@
-const baseURL = 'https://localhost.3001';
+const baseURL = 'https://my-json-server.typicode.com/VictoryAlexander/se_project_react';
 
 function handleServerResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
