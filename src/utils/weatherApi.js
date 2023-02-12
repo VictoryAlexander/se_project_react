@@ -22,13 +22,15 @@ function filterDataFromWeatherAPI(data) {
 }
 
 function weatherType(data) {
-  if (data.main.temp >= 86) {
-    return 'hot';
-  } else if (data.main.temp >= 66 && data.main.temp <= 85) {
-    return 'warm';
-  } else if (data.main.temp <= 65) {
-    return 'cold';
-  }
+  if(data && data.main) {
+    if (data.main.temp >= 86) {
+      return 'hot';
+    } else if (data.main.temp >= 66 && data.main.temp <= 85) {
+      return 'warm';
+    } else if (data.main.temp <= 65) {
+      return 'cold';
+    }}
+  return '';
 }
 
 export { getForecastWeather, filterDataFromWeatherAPI, weatherType };

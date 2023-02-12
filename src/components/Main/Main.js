@@ -3,19 +3,10 @@ import './Main.css';
 import ItemCard from "../ItemCard/ItemCard.js";
 import WeatherCard from "../WeatherCard/WeatherCard.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import { weatherType } from "../../utils/weatherApi";
 
 function Main({ weatherData, cards, onCardClick, onCardDelete }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
-  function weatherType() {
-    if (weatherData.temperature[currentTemperatureUnit] >= 86) {
-      return 'hot';
-    } else if (weatherData.temperature[currentTemperatureUnit] >= 66 && weatherData.temperature[currentTemperatureUnit] <= 85) {
-      return 'warm';
-    } else if (weatherData.temperature[currentTemperatureUnit] <= 65) {
-      return 'cold';
-    }
-  }
 
   return (
     <main className="main">
@@ -23,7 +14,7 @@ function Main({ weatherData, cards, onCardClick, onCardDelete }) {
       <section className="main__clothes">
         <div className="main__info">
           <div className="main__description-container">
-            <p className="main__description">Today is {weatherData.temperature[currentTemperatureUnit]} and it is {weatherType()}</p>
+            <p className="main__description">Today is {weatherData.temperature && weatherData.temperature[currentTemperatureUnit]} and it is {weatherType()}</p>
             <p className="main__description">&nbsp;/&nbsp;</p>
             <p className="main__description">You may want to wear:</p>
           </div>

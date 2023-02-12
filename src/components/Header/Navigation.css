@@ -28,6 +28,11 @@
   text-align: center;
   display: flex;
   align-items: center;
+  text-decoration: none;
+}
+
+.navigation__link:visited {
+  color: #000;
 }
 
 .navigation__user {

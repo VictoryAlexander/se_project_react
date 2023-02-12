@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Route, Switch, HashRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -75,33 +75,30 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <div className='page__wrapper'>
-          <HashRouter>
+          <BrowserRouter>
             <Header
               weatherData={weatherData}
               handleAddClick={() => setActiveModal('create')}
             />
             <Switch>
-              <Route exact path='/' element={weatherData.temperature &&
+              <Route exact path='/'>
                 <Main 
                   weatherData={weatherData}
                   cards={clothingItems}
                   onCardClick={handleCardClick}
                   onCardDelete={handleCardDelete}
                 />
-              }
-              />
-              <Route exact path='/profile' element={
-                clothingItems.length !== 0 &&
+              </Route>
+              <Route exact path='/profile'>
                 <Profile
                   cards={clothingItems}
                   onCardClick={handleCardClick}
                   onCardDelete={handleCardDelete}
                   onAddNewClick={() => setActiveModal('create')}
                 />
-              }
-              />
+              </Route>
             </Switch>
-          </HashRouter>
+          </BrowserRouter>
           <Footer />
       </div>
       {activeModal === 'create' && (

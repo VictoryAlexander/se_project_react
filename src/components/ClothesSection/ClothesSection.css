@@ -1,0 +1,16 @@
+.clothes__section {
+  margin: 0 0 0 116px;
+}
+
+.main__add-card {
+  border: none;
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  background: #f3f3f3;
+  color: rgba(0, 0, 0, 0.6);
+  margin-left: 20px;
+  cursor: pointer;
+}
