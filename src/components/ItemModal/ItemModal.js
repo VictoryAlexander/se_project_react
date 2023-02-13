@@ -12,7 +12,7 @@ function ItemModal({ card, onClose, onCardDelete }) {
     <div className="item-modal__preview">
       <div className="item-modal__container">
         <button type="button" className="item-modal__close-button" onClick={onClose}></button>
-        <img className="item-modal__preview-image" alt={card.name} src={card.link} />
+        <img className="item-modal__preview-image" alt={card.name} src={card.imageUrl} />
         <div className="item-modal__description">
           <h3 className="item-modal__title">{card.name}</h3>
           <button className="item-modal__delete-button" onClick={handleCardDelete(card)}></button>

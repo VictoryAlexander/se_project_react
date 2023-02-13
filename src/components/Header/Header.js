@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import './Header.css';
 import './Navigation.css';
 import avatarDefault from "../../images/Avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 
-function Header({ weatherData, handleAddClick }) {
+function Header({ handleAddClick }) {
+  const { weatherData } = useContext(CurrentTemperatureUnitContext);
   if (!weatherData) return null;
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   const username = 'Victor Alexander';

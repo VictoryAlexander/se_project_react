@@ -8,7 +8,7 @@ import Profile from '../Profile/Profile';
 import Footer from '../Footer/Footer';
 import ItemModal from '../ItemModal/ItemModal';
 import { location, secretKey } from '../../utils/constants';
-import { filterDataFromWeatherAPI, getForecastWeather } from '../../utils/weatherApi';
+import { filterDataFromWeatherAPI, getForecastWeather, filterWeatherType } from '../../utils/weatherApi';
 import api from '../../utils/api';
 import AddItemModal from '../AddItemModal/AddItemModal';
 
@@ -18,6 +18,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [weatherType, setWeatherType] = useState('');
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -56,6 +57,7 @@ function App() {
       getForecastWeather(location, secretKey)
         .then((data) => {
           setWeatherData(filterDataFromWeatherAPI(data));
+          setWeatherType(filterWeatherType(data));
         })
         .catch((err) => console.log(err));
     }
@@ -72,21 +74,20 @@ function App() {
   return (
     <div className='page'>
       <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+        value={{ currentTemperatureUnit, weatherData, handleToggleSwitchChange }}
       >
         <div className='page__wrapper'>
           <BrowserRouter>
             <Header
-              weatherData={weatherData}
               handleAddClick={() => setActiveModal('create')}
             />
             <Switch>
               <Route exact path='/'>
                 <Main 
-                  weatherData={weatherData}
                   cards={clothingItems}
                   onCardClick={handleCardClick}
                   onCardDelete={handleCardDelete}
+                  weatherType={weatherType}
                 />
               </Route>
               <Route exact path='/profile'>
@@ -95,6 +96,7 @@ function App() {
                   onCardClick={handleCardClick}
                   onCardDelete={handleCardDelete}
                   onAddNewClick={() => setActiveModal('create')}
+                  weatherType={weatherType}
                 />
               </Route>
             </Switch>
