@@ -16,8 +16,8 @@ function filterDataFromWeatherAPI(data) {
   }
   const weather = {};
   weather.city = data.name;
-  weather.temperatureF = `${Math.round(data.main.temp)}°F`;
-  weather.temperatureC = `${Math.round((data.main.temp - 32) * 5/9)}°C`;
+  weather.temperature.F = `${Math.round(data.main.temp)}°F`;
+  weather.temperature.C = `${Math.round((data.main.temp - 32) * 5/9)}°C`;
   return weather;
 }
 
