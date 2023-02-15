@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard.js";
 import WeatherCard from "../WeatherCard/WeatherCard.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ cards, onCardClick, onCardDelete, weatherType }) {
+function Main({ cards, onCardClick, weatherType }) {
   const { currentTemperatureUnit, weatherData } = useContext(CurrentTemperatureUnitContext);
 
   function cardFilter() {
@@ -14,13 +14,10 @@ function Main({ cards, onCardClick, onCardDelete, weatherType }) {
           key={filteredCard.id}
           card={filteredCard}
           onCardClick={onCardClick}
-          onCardDelete={onCardDelete}
         />
       ))
     )
   }
-
-  console.log(cardFilter());
 
   return (
     <main className="main">

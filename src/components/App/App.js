@@ -72,11 +72,11 @@ function App() {
   },[]);
 
   return (
-    <div className='page'>
+    <div className='app'>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, weatherData, handleToggleSwitchChange }}
       >
-        <div className='page__wrapper'>
+        <div className='app__wrapper'>
           <BrowserRouter>
             <Header
               handleAddClick={() => setActiveModal('create')}
@@ -86,7 +86,6 @@ function App() {
                 <Main 
                   cards={clothingItems}
                   onCardClick={handleCardClick}
-                  onCardDelete={handleCardDelete}
                   weatherType={weatherType}
                 />
               </Route>
@@ -94,7 +93,6 @@ function App() {
                 <Profile
                   cards={clothingItems}
                   onCardClick={handleCardClick}
-                  onCardDelete={handleCardDelete}
                   onAddNewClick={() => setActiveModal('create')}
                   weatherType={weatherType}
                 />

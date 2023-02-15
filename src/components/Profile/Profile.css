@@ -4,9 +4,9 @@
 }
 
 .profile-sidebar {
-  display: flex;
+  flex-basis: 325px;
 }
 
 .profile-clothes {
-  display: flex;
+  flex-grow: 1;
 }

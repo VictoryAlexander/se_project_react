@@ -41,8 +41,8 @@
 
 .item-modal__description {
   display: flex;
-  flex-direction: column;
-  margin-left: 32px;
+  justify-content: space-between;
+  margin: 12px 32px 0 32px;
 }
 
 .item-modal__title {
@@ -51,7 +51,19 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 1.2;
-  margin: 16px 0 0 0;
+  margin: 0;
+}
+
+.item-modal__delete-button {
+  border: none;
+  background: #ffffff;
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #ff4d00;
+  cursor: pointer;
 }
 
 .item-modal__weather {
@@ -60,4 +72,5 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 1.2;
+  margin: 12px 0 32px 32px;
 }

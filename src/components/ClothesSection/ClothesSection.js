@@ -2,7 +2,17 @@ import React from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import './ClothesSection.css';
 
-function ClothesSection({ sectionData, onAddNewClick, onCardClick, onCardDelete, weatherType }) {
+function ClothesSection({ sectionData, onAddNewClick, onCardClick, weatherType }) {
+
+  function cardFilter() {
+    return sectionData && sectionData.filter(card => card.weather === weatherType).map(filteredCard => (
+      <ItemCard
+        key={filteredCard.id}
+        card={filteredCard}
+        onCardClick={onCardClick}
+      />
+    ))
+  }
   
   return sectionData.length > 0 && (
     <section className="clothes__section">
@@ -11,14 +21,7 @@ function ClothesSection({ sectionData, onAddNewClick, onCardClick, onCardDelete,
         <button className="main__add-card" onClick={onAddNewClick}>+ Add new</button>
       </div>
       <ul className="main__items">
-        {sectionData && sectionData.filter(card => card.weather === {weatherType}).map(filteredCard => (
-          <ItemCard
-            key={filteredCard._id}
-            card={filteredCard}
-            onCardClick={onCardClick}
-            onCardDelete={onCardDelete}
-          />
-        ))}
+        {cardFilter()}
       </ul>
     </section>
   )

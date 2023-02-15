@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import './AddItemModal.css';
 
 function AddItemModal({ onAddItem, onClose }) {
 
@@ -27,7 +28,7 @@ function AddItemModal({ onAddItem, onClose }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(name, imageUrl, weather);
+    onAddItem(name, weather, imageUrl);
   }
 
   return (
@@ -38,12 +39,13 @@ function AddItemModal({ onAddItem, onClose }) {
       buttonText='Add garmet'
       onSubmit={handleSubmit}
     >
-      <label className='modal__label'>
+      <label className='add-modal__label'>
+        Name
         <input
           type="text"
           name="name"
           id="place-name"
-          className="modal__input modal__input_type_card-name"
+          className="add-modal__input add-modal__input_type_card-name"
           placeholder="Name"
           required
           minLength="1"
@@ -51,23 +53,24 @@ function AddItemModal({ onAddItem, onClose }) {
           value={name}
           onChange={handleNameChange}
         />
-        <span className='modal__error' id='place-name-error'></span>
+        <span className='add-modal__error' id='place-name-error'></span>
         </label>
-      <label className='modal__label'>
+      <label className='add-modal__label'>
+        Image
         <input
           type='url'
           name='link'
           id='place-link'
-          className='modal__input modal__input_type_url'
+          className='add-modal__input add-modal__input_type_url'
           placeholder='Image URL'
           required
           value={imageUrl}
           onChange={handleImageUrlChange}
         />
-        <span className='modal__error' id='place-link-error'></span>
+        <span className='add-modal__error' id='place-link-error'></span>
       </label>
-      <p className='modal__description'>Select the weather type:</p>
-      <div className='modal__input modal__input_type_radio'>
+      <p className='add-modal__description'>Select the weather type:</p>
+      <div className='add-modal__input add-modal__input_type_radio'>
         <div>
           <input type='radio' id='choiceHot' name='weatherType' value='hot' className='modal__radio' onChange={handleWeatherChange} />
           <label className='modal__label_radio' htmlFor='choiceHot'>Hot</label>
