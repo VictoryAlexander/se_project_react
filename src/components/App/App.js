@@ -29,16 +29,29 @@ function App() {
     setActiveModal(null);
   }
 
+  useEffect(() => {
+    function closeByEscape(e) {
+      if (e.key === 'Escape') {
+        closeAllModals();
+      }
+    }
+
+    document.addEventListener('keydown', closeByEscape);
+
+    return () => document.removeEventListener('keydown', closeByEscape)
+  }, []);
+
   function handleToggleSwitchChange() {
     currentTemperatureUnit === 'F'
       ? setCurrentTemperatureUnit('C')
       : setCurrentTemperatureUnit('F');
   }
 
-  function handleAddItemSubmit(item) {
-    api.addItem(item)
-      .then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
+  function handleAddItemSubmit(name, weather, imageUrl) {
+    let id = clothingItems.length;
+    api.addItem(id, name, weather, imageUrl)
+      .then((item) => {
+        setClothingItems([...clothingItems, item]);
         closeAllModals();
       })
       .catch((err) => console.log(err));
@@ -48,6 +61,7 @@ function App() {
     api.removeItem(card.id)
       .then(() => {
         setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        closeAllModals();
       })
       .catch((err) => console.log(err));
   }

@@ -13,7 +13,6 @@ function ItemModal({ card, onClose, onCardDelete }) {
           <button type='button' className="item-modal__delete-button" onClick={(e) => {
             e.preventDefault();
             onCardDelete(card);
-            onClose();
           }}>
             Delete item
           </button>

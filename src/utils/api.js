@@ -13,13 +13,14 @@ function getItemList() {
   }).then(handleServerResponse);
 }
 
-function addItem({ name, weather, imageUrl }) {
+function addItem(id, name, weather, imageUrl) {
   return fetch(`${baseURL}/items`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
+      id,
       name,
       weather,
       imageUrl

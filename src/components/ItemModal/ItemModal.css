@@ -37,6 +37,8 @@
 
 .item-modal__preview-image {
   object-fit: cover;
+  width: 100%;
+  height: 500px;
 }
 
 .item-modal__description {
