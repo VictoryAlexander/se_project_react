@@ -48,7 +48,7 @@ function App() {
   }
 
   function handleAddItemSubmit(name, weather, imageUrl) {
-    let id = clothingItems.length;
+    const id = clothingItems.length + 1;
     api.addItem(id, name, weather, imageUrl)
       .then((item) => {
         setClothingItems([...clothingItems, item]);
