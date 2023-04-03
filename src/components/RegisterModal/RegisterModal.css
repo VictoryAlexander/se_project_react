@@ -1,0 +1,25 @@
+.signUp-modal__label {
+    display: flex;
+    flex-direction: column;
+    margin: 24px 28px 0 28px;
+    font-family: 'Cabinet Grotesk', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+}
+    
+.signUp-modal__input {
+    font-family: 'Cabinet Grotesk', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #000;
+    padding: 0;
+    color: #000;
+    margin: 8px 0 0 0;
+}

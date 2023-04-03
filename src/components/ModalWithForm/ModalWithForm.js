@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import './ModalWithForm.css';
 
-function ModalWithForm({ title, name, onClose, buttonText, onSubmit, children }) {
+function ModalWithForm({ title, name, onClose, buttonText, onSubmit, redirectButtonText, onButtonClick, children }) {
+
+  const redirectButtonClassName = `modal__redirect-button ${redirectButtonText.length > 0 ? 'modal__redirect-button_visible' : 'modal__redirect-button_hidden'}`;
+
   return (
     <div className="modal">
       <form className="modal__form" name={name} onSubmit={onSubmit}>
@@ -14,7 +17,10 @@ function ModalWithForm({ title, name, onClose, buttonText, onSubmit, children })
           />
         </div>
         {children}
-        <button type="submit" className="modal__submit-button">{buttonText}</button>
+        <div>
+          <button type="submit" className="modal__submit-button">{buttonText}</button>
+          <button type='button' className={redirectButtonClassName} onClick={onButtonClick}>{redirectButtonText}</button>
+        </div>
       </form>
     </div>
   )

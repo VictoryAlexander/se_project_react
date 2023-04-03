@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+.navigation__button_signIn {
+  margin: 0 0 0 20px;
+}
+
 .navigation__link {
   font-family: 'Cabinet Grotesk', Arial, sans-serif;
   font-style: normal;

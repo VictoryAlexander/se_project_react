@@ -5,12 +5,52 @@ import './Navigation.css';
 import avatarDefault from "../../images/Avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 
-function Header({ handleAddClick }) {
+function Header({ handleAddClick, handleRegisterClick, handleSignInClick }) {
   const { weatherData } = useContext(CurrentTemperatureUnitContext);
+  const currentUser = useContext(CurrentUserContext);
+
   if (!weatherData) return null;
+
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
+
+  if (!currentUser) {
+    return (
+      <header className="header">
+      <div className="header__container">
+        <Link
+          to='/'
+          className="header__logo"
+        />
+        <p className="header__date">
+          {currentDate}, {weatherData.city}
+        </p>
+      </div>
+      <div className="header__nav">
+        <nav className="navigation">
+          <ul className="navigation__container">
+            <li>
+              <ToggleSwitch />
+            </li>
+            <li>
+              <button onClick={handleRegisterClick} className="navigation__button">
+                Sign Up
+              </button>
+            </li>
+            <li>
+              <button onClick={handleSignInClick} className="navigation__button navigation__button_signIn">
+                Sign In
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    )
+  }
+
   const username = 'Victor Alexander';
   const avatar = '';
 

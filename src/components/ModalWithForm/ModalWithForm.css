@@ -65,3 +65,19 @@
   margin-bottom: 36px;
   margin-top: 24px;
 }
+
+.modal__redirect-button {
+  font-family: 'Cabinet Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  border: none;
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.modal__redirect-button_hidden {
+  visibility: hidden;
+}

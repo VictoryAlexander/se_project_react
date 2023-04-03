@@ -68,6 +68,10 @@
   cursor: pointer;
 }
 
+.item-modal__delete-button_hidden {
+  visibility: hidden;
+}
+
 .item-modal__weather {
   font-family: 'Cabinet Grotesk', Arial, sans-serif;
   font-style: normal;

@@ -54,7 +54,7 @@ function AddItemModal({ onAddItem, onClose }) {
           onChange={handleNameChange}
         />
         <span className='add-modal__error' id='place-name-error'></span>
-        </label>
+      </label>
       <label className='add-modal__label'>
         Image
         <input
