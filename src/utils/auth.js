@@ -1,6 +1,12 @@
 const baseURL = 'http://localhost:3001';
 
-const register = (name, avatar, email, password) => {
+const token = localStorage.getItem('jwt');
+
+function handleServerResponse(res) {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+}
+
+function register(name, avatar, email, password) {
   return fetch(`${baseURL}/signup`, {
     method: 'POST',
     headers: {
@@ -8,16 +14,10 @@ const register = (name, avatar, email, password) => {
     },
     body: JSON.stringify({ name, avatar, email, password })
   })
-  .then((response) => {
-    return response.json();
-  })
-  .then((res) => {
-    return res;
-  })
-  .catch((err) => console.log(err));
+  .then(handleServerResponse);
 };
 
-const signIn = (email, password) => {
+function signIn(email, password) {
   return fetch(`${baseURL}/signin`, {
     method: 'POST',
     headers: {
@@ -25,16 +25,10 @@ const signIn = (email, password) => {
     },
     body: JSON.stringify({ email, password })
   })
-  .then((response) => {
-    return response.json();
-  })
-  .then((res) => {
-    return res;
-  })
-  .catch((err) => console.log(err));
+  .then(handleServerResponse);
 };
 
-const checkToken = (token) => {
+function checkToken() {
   return fetch(`${baseURL}/users/me`, {
     method: 'GET',
     headers: {
@@ -42,16 +36,10 @@ const checkToken = (token) => {
       authorization: `Bearer ${token}`,
     },
   })
-  .then((response) => {
-    return response.json();
-  })
-  .then((res) => {
-    return res;
-  })
-  .catch((err) => console.log(err));
+  .then(handleServerResponse);
 };
 
-const editProfile = (name, avatar, token) => {
+function editProfile(name, avatar) {
   return fetch(`${baseURL}/users/me`, {
     method: 'PATCH',
     headers: {
@@ -60,13 +48,7 @@ const editProfile = (name, avatar, token) => {
     },
     body: JSON.stringify({ name, avatar })
   })
-  .then((response) => {
-    return response.json();
-  })
-  .then((res) => {
-    return res;
-  })
-  .catch((err) => console.log(err));
+  .then(handleServerResponse);
 }
 
 const auth = { register, signIn, checkToken, editProfile };

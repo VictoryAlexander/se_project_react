@@ -1,5 +1,7 @@
 const baseURL = 'http://localhost:3001';
 
+const token = localStorage.getItem('jwt');
+
 function handleServerResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
@@ -13,7 +15,7 @@ function getItemList() {
   }).then(handleServerResponse);
 }
 
-function addItem(id, name, weather, imageUrl, token) {
+function addItem(name, weather, imageUrl) {
   return fetch(`${baseURL}/items`, {
     method: 'POST',
     headers: {
@@ -21,7 +23,6 @@ function addItem(id, name, weather, imageUrl, token) {
       authorization: `Bearer ${token}`
     },
     body: JSON.stringify({
-      id,
       name,
       weather,
       imageUrl
@@ -29,7 +30,7 @@ function addItem(id, name, weather, imageUrl, token) {
   }).then(handleServerResponse)
 }
 
-function removeItem(id, token) {
+function removeItem(id) {
   return fetch(`${baseURL}/items/${id}`, {
     method: 'DELETE',
     headers: {
@@ -39,7 +40,7 @@ function removeItem(id, token) {
   }).then(handleServerResponse)
 }
 
-function addCardLike(id, token) {
+function addCardLike(id) {
   return fetch(`${baseURL}/items/${id}/likes`, {
     method: 'PUT',
     headers: {
@@ -49,7 +50,7 @@ function addCardLike(id, token) {
   }).then(handleServerResponse)
 }
 
-function removeCardLike(id, token) {
+function removeCardLike(id) {
   return fetch(`${baseURL}/items/${id}/likes`, {
     method: 'DELETE',
     headers: {

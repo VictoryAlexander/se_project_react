@@ -52,7 +52,7 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      auth.checkToken(token)
+      auth.checkToken()
         .catch((err) => console.log(err));
     }
   })
@@ -64,21 +64,23 @@ function App() {
   }
 
   function handleAddItemSubmit(name, weather, imageUrl) {
-    api.addItem(name, weather, imageUrl, token)
+    api.addItem(name, weather, imageUrl)
       .then((item) => {
         setClothingItems([...clothingItems, item]);
         closeAllModals();
       })
       .catch((err) => console.log(err));
+    getItems();
   }
 
   function handleCardDelete(card) {
-    api.removeItem(card._id, token)
+    api.removeItem(card._id)
       .then(() => {
         setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
         closeAllModals();
       })
       .catch((err) => console.log(err));
+    getItems();
   }
 
   function handleRegister(name, avatar, email, password) {
@@ -95,13 +97,14 @@ function App() {
     .then((res) => {
       localStorage.setItem("jwt", res.token);
       setIsLoggedIn(true);
-      auth.checkToken(token)
-        .then((res) => {
-          setCurrentUser(res);
-        })
-      closeAllModals();
     })
     .catch((err) => console.log(err));
+    auth.checkToken()
+    .then((res) => {
+      setCurrentUser(res);
+    })
+    .catch((err) => console.log(err));
+    closeAllModals();
   }
 
   function handleLogOut() {
@@ -111,36 +114,38 @@ function App() {
   }
 
   function handleProfileChange(name, avatar) {
-    auth.editProfile(name, avatar, token)
+    auth.editProfile(name, avatar)
       .then((res) => {
         setCurrentUser(res);
       })
       .catch((err) => {
         console.log(err);
       })
+    closeAllModals();
   }
 
   function handleLikeClick(id, isLiked) {
     isLiked
       ?
         api
-          .removeCardLike(id, token)
+          .removeCardLike(id)
           .then((updatedCard) => {
             setClothingItems((cards) => 
               cards.map((card) => (card._id === id ? updatedCard : card))
             );
+            getItems();
           })
           .catch((err) => console.log(err))
       :
         api
-          .addCardLike(id, token)
+          .addCardLike(id)
           .then((updatedCard) => {
             setClothingItems((cards) => 
               cards.map((card) => (card._id === id ? updatedCard : card))
             );
+            getItems();
           })
           .catch((err) => console.log(err))
-    getItems();
   };
 
   useEffect(() => {
@@ -166,7 +171,7 @@ function App() {
     getItems();
     setInterval(() => {
       getItems();
-    },60000)
+    },900000)
   }, [])
 
   return (

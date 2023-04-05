@@ -60,7 +60,6 @@ function EditProfileModal({ handleProfileChange, onClose }) {
           placeholder="Avatar URL"
           required
           minLength="1"
-          maxLength="30"
           value={avatar}
           onChange={handleAvatarChange}
         />
