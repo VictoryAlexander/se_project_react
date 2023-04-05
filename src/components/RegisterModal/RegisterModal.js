@@ -94,8 +94,7 @@ function RegisterModal({ handleRegister, onClose, onButtonClick }) {
           id="image-url"
           className="signUp-modal__input signUp-modal__input_type_avatar"
           placeholder="Avatar URL"
-          minLength="1"
-          maxLength="30"
+          required
           value={avatar}
           onChange={handleAvatarChange}
         />

@@ -8,7 +8,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 
-function Header({ handleAddClick, handleRegisterClick, handleSignInClick }) {
+function Header({ handleAddClick, handleRegisterClick, handleSignInClick, isLoggedIn }) {
   const { weatherData } = useContext(CurrentTemperatureUnitContext);
   const currentUser = useContext(CurrentUserContext);
 
@@ -51,8 +51,8 @@ function Header({ handleAddClick, handleRegisterClick, handleSignInClick }) {
     )
   }
 
-  const username = 'Victor Alexander';
-  const avatar = '';
+  const username = currentUser.data.name;
+  const avatar = currentUser.data.avatar;
 
   return (
     <header className="header">

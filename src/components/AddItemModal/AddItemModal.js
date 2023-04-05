@@ -38,6 +38,7 @@ function AddItemModal({ onAddItem, onClose }) {
       onClose={onClose}
       buttonText='Add garmet'
       onSubmit={handleSubmit}
+      redirectButtonText={''}
     >
       <label className='add-modal__label'>
         Name

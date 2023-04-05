@@ -93,10 +93,13 @@ function App() {
   function handleLogIn(email, password) {
     auth.signIn(email, password)
     .then((res) => {
-      setIsLoggedIn(true);
-      setCurrentUser(res);
       localStorage.setItem("jwt", res.token);
-      auth.checkToken(token);
+      setIsLoggedIn(true);
+      auth.checkToken(token)
+        .then((res) => {
+          setCurrentUser(res);
+        })
+      closeAllModals();
     })
     .catch((err) => console.log(err));
   }
@@ -121,7 +124,7 @@ function App() {
     isLiked
       ?
         api
-          .addCardLike(id, token)
+          .removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) => 
               cards.map((card) => (card._id === id ? updatedCard : card))
@@ -130,13 +133,14 @@ function App() {
           .catch((err) => console.log(err))
       :
         api
-          .removeCardLike(id, token)
+          .addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) => 
               cards.map((card) => (card._id === id ? updatedCard : card))
             );
           })
           .catch((err) => console.log(err))
+    getItems();
   };
 
   useEffect(() => {
@@ -150,18 +154,18 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
+  function getItems() {
     api.getItemList()
       .then((items) => {
         setClothingItems(items);
       })
       .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    getItems();
     setInterval(() => {
-      api.getItemList()
-      .then((items) => {
-        setClothingItems(items);
-      })
-      .catch((err) => console.log(err));
+      getItems();
     },60000)
   }, [])
 
@@ -177,6 +181,7 @@ function App() {
                 handleAddClick={() => setActiveModal('create')}
                 handleRegisterClick={() => setActiveModal('signUp')}
                 handleSignInClick={() => setActiveModal('signIn')}
+                isLoggedIn={isLoggedIn}
               />
               <Switch>
                 <Route exact path='/'>
@@ -195,6 +200,7 @@ function App() {
                     weatherType={weatherType}
                     onProfileChangeClick={() => setActiveModal('changeProfile')}
                     onLogOut={handleLogOut}
+                    onCardLike={handleLikeClick}
                   />
                 </ProtectedRoute>
               </Switch>
