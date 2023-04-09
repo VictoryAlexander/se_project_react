@@ -27,7 +27,6 @@ function App() {
   const [weatherType, setWeatherType] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const token = localStorage.getItem('jwt');
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -51,11 +50,16 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const token = localStorage.getItem('jwt');
     if (token) {
-      auth.checkToken()
+      auth.checkToken(token)
+        .then((res) => {
+          setIsLoggedIn(true);
+          setCurrentUser(res);
+        })
         .catch((err) => console.log(err));
     }
-  })
+  }, [])
 
   function handleToggleSwitchChange() {
     currentTemperatureUnit === 'F'
@@ -64,23 +68,23 @@ function App() {
   }
 
   function handleAddItemSubmit(name, weather, imageUrl) {
-    api.addItem(name, weather, imageUrl)
+    const token = localStorage.getItem('jwt');
+    api.addItem(name, weather, imageUrl, token)
       .then((item) => {
         setClothingItems([...clothingItems, item]);
         closeAllModals();
       })
       .catch((err) => console.log(err));
-    getItems();
   }
 
   function handleCardDelete(card) {
-    api.removeItem(card._id)
+    const token = localStorage.getItem('jwt');
+    api.removeItem(card._id, token)
       .then(() => {
-        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        setClothingItems((cards) => cards.filter((c) => c._id !== card._id));
         closeAllModals();
       })
       .catch((err) => console.log(err));
-    getItems();
   }
 
   function handleRegister(name, avatar, email, password) {
@@ -97,14 +101,10 @@ function App() {
     .then((res) => {
       localStorage.setItem("jwt", res.token);
       setIsLoggedIn(true);
-    })
-    .catch((err) => console.log(err));
-    auth.checkToken()
-    .then((res) => {
       setCurrentUser(res);
+      closeAllModals();
     })
     .catch((err) => console.log(err));
-    closeAllModals();
   }
 
   function handleLogOut() {
@@ -114,36 +114,36 @@ function App() {
   }
 
   function handleProfileChange(name, avatar) {
-    auth.editProfile(name, avatar)
+    const token = localStorage.getItem('jwt');
+    auth.editProfile(name, avatar, token)
       .then((res) => {
         setCurrentUser(res);
+        closeAllModals();
       })
       .catch((err) => {
         console.log(err);
       })
-    closeAllModals();
   }
 
   function handleLikeClick(id, isLiked) {
+    const token = localStorage.getItem('jwt');
     isLiked
       ?
         api
-          .removeCardLike(id)
+          .removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) => 
               cards.map((card) => (card._id === id ? updatedCard : card))
             );
-            getItems();
           })
           .catch((err) => console.log(err))
       :
         api
-          .addCardLike(id)
+          .addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) => 
               cards.map((card) => (card._id === id ? updatedCard : card))
             );
-            getItems();
           })
           .catch((err) => console.log(err))
   };
@@ -159,20 +159,13 @@ function App() {
     }
   }, []);
 
-  function getItems() {
+  useEffect(() => {
     api.getItemList()
       .then((items) => {
         setClothingItems(items);
       })
       .catch((err) => console.log(err));
-  }
-
-  useEffect(() => {
-    getItems();
-    setInterval(() => {
-      getItems();
-    },900000)
-  }, [])
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import './EditProfileModal.css';
 
 function EditProfileModal({ handleProfileChange, onClose }) {
+  const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState('');
   const [avatar, setAvatar] = useState('');
 
   useEffect(() => {
-    setName('');
-    setAvatar('');
+    const name = currentUser.data.name;
+    const avatar = currentUser.data.avatar;
+    if (name && avatar) {
+      setName(name);
+      setAvatar(avatar);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleNameChange(e) {

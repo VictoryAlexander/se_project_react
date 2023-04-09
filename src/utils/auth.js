@@ -1,10 +1,6 @@
+import { handleServerResponse } from "./api";
+
 const baseURL = 'http://localhost:3001';
-
-const token = localStorage.getItem('jwt');
-
-function handleServerResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-}
 
 function register(name, avatar, email, password) {
   return fetch(`${baseURL}/signup`, {
@@ -28,7 +24,7 @@ function signIn(email, password) {
   .then(handleServerResponse);
 };
 
-function checkToken() {
+function checkToken(token) {
   return fetch(`${baseURL}/users/me`, {
     method: 'GET',
     headers: {
@@ -39,7 +35,7 @@ function checkToken() {
   .then(handleServerResponse);
 };
 
-function editProfile(name, avatar) {
+function editProfile(name, avatar, token) {
   return fetch(`${baseURL}/users/me`, {
     method: 'PATCH',
     headers: {
