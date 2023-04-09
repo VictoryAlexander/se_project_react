@@ -52,7 +52,7 @@ function LoginModal ({ handleLogIn, onClose, onButtonClick }) {
       <label className='logIn-modal__label'>
         Password
         <input
-          type="text"
+          type="password"
           name="password"
           id="password"
           className="logIn-modal__input logIn-modal__input_type_password"

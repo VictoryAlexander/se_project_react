@@ -100,8 +100,13 @@ function App() {
     auth.signIn(email, password)
     .then((res) => {
       localStorage.setItem("jwt", res.token);
-      setIsLoggedIn(true);
-      setCurrentUser(res);
+      const token = localStorage.getItem('jwt');
+      auth.checkToken(token)
+        .then((res) => {
+          setCurrentUser(res);
+          setIsLoggedIn(true);
+        })
+        .catch((err) => console.log(err));
       closeAllModals();
     })
     .catch((err) => console.log(err));
