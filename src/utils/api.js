@@ -1,11 +1,13 @@
-const baseURL = 'http://localhost:3001';
+export const baseUrl = process.env.NODE_ENV === 'production' 
+  ? 'deployed-backend-url'
+  : 'http://localhost:3001';
 
 export function handleServerResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 
 function getItemList() {
-  return fetch(`${baseURL}/items`, {
+  return fetch(`${baseUrl}/items`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -14,7 +16,7 @@ function getItemList() {
 }
 
 function addItem(name, weather, imageUrl, token) {
-  return fetch(`${baseURL}/items`, {
+  return fetch(`${baseUrl}/items`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -29,7 +31,7 @@ function addItem(name, weather, imageUrl, token) {
 }
 
 function removeItem(id, token) {
-  return fetch(`${baseURL}/items/${id}`, {
+  return fetch(`${baseUrl}/items/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -39,7 +41,7 @@ function removeItem(id, token) {
 }
 
 function addCardLike(id, token) {
-  return fetch(`${baseURL}/items/${id}/likes`, {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -49,7 +51,7 @@ function addCardLike(id, token) {
 }
 
 function removeCardLike(id, token) {
-  return fetch(`${baseURL}/items/${id}/likes`, {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

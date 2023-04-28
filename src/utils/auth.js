@@ -1,9 +1,7 @@
-import { handleServerResponse } from "./api";
-
-const baseURL = 'http://localhost:3001';
+import { handleServerResponse, baseUrl } from "./api";
 
 function register(name, avatar, email, password) {
-  return fetch(`${baseURL}/signup`, {
+  return fetch(`${baseUrl}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -14,7 +12,7 @@ function register(name, avatar, email, password) {
 };
 
 function signIn(email, password) {
-  return fetch(`${baseURL}/signin`, {
+  return fetch(`${baseUrl}/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -25,7 +23,7 @@ function signIn(email, password) {
 };
 
 function checkToken(token) {
-  return fetch(`${baseURL}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -36,7 +34,7 @@ function checkToken(token) {
 };
 
 function editProfile(name, avatar, token) {
-  return fetch(`${baseURL}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
