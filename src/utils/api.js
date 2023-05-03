@@ -1,5 +1,5 @@
 export const baseUrl = process.env.NODE_ENV === 'production' 
-  ? 'api.wtwr.minecraftnoob.com'
+  ? 'https://api.wtwr.minecraftnoob.com'
   : 'http://localhost:3001';
 
 export function handleServerResponse(res) {
