@@ -7,6 +7,9 @@ This app uses a weather API that displays weather forecast based on location of 
 Find deployed app:
 wtwr.minecraftnoob.com
 
+## Next Phase Of Project
+I will plan on adding the ability for user to change their location.
+
 ## LINK TO BACK-END REPO
 
 https://github.com/VictoryAlexander/se_project_express
